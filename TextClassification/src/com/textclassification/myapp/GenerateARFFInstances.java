@@ -60,7 +60,6 @@ public class GenerateARFFInstances
 				} 
 				catch (Exception e) 
 				{
-					System.out.println(e.getMessage());
 					System.err.println("failed to convert file: " + directoryPath + File.separator + files[i]);
 				}
 			}
