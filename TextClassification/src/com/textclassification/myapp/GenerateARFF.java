@@ -20,6 +20,8 @@ public class GenerateARFF
 	private FastVector mr;
 	private Instances data;
 	private String NEW_LINE_SEPARATOR_PATTERN = "(\r\n|\n)";
+	private String MULTIPLE_SPACE_SEPARATOR_PATTERN = "\\s+";
+	private String SPACE_SEPARATOR = " ";
 	private String COMMA_SEPARATOR = ",";
 
 	public GenerateARFF() 
@@ -86,7 +88,7 @@ public class GenerateARFF
 	{
 		// 3. fill with data
 		Instance inst = new DenseInstance(2);
-		inst.setValue((Attribute) atts.elementAt(0), text.replaceAll(NEW_LINE_SEPARATOR_PATTERN, ""));
+		inst.setValue((Attribute) atts.elementAt(0), text.replaceAll(NEW_LINE_SEPARATOR_PATTERN, "").replaceAll(MULTIPLE_SPACE_SEPARATOR_PATTERN, SPACE_SEPARATOR));
 		
 		if (isData)
 		{
