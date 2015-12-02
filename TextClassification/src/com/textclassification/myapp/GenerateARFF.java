@@ -13,15 +13,14 @@ import weka.core.DenseInstance;
 import weka.core.FastVector;
 import weka.core.Instance;
 import weka.core.Instances;
-import weka.core.tokenizers.NGramTokenizer;
-import weka.filters.Filter;
-import weka.filters.unsupervised.attribute.StringToWordVector;
 
 public class GenerateARFF 
 {
 	private FastVector atts;
 	private FastVector mr;
 	private Instances data;
+	private String NEW_LINE_SEPARATOR_PATTERN = "(\r\n|\n)";
+	private String COMMA_SEPARATOR = ",";
 
 	public GenerateARFF() 
 	{
@@ -87,7 +86,7 @@ public class GenerateARFF
 	{
 		// 3. fill with data
 		Instance inst = new DenseInstance(2);
-		inst.setValue((Attribute) atts.elementAt(0), text.replaceAll("(\r\n|\n)", ""));
+		inst.setValue((Attribute) atts.elementAt(0), text.replaceAll(NEW_LINE_SEPARATOR_PATTERN, ""));
 		
 		if (isData)
 		{
@@ -109,7 +108,7 @@ public class GenerateARFF
 			
 			if (isData)
 			{
-				writer.write(",");
+				writer.write(COMMA_SEPARATOR);
 				writer.write(inst.stringValue(1));
 			}
 			
@@ -118,28 +117,5 @@ public class GenerateARFF
 		
 		writer.flush();
 		writer.close();
-	}
-	
-	public Instances getFilteredInstances() throws Exception
-	{
-		// Set the tokenizer 
-		NGramTokenizer tokenizer = new NGramTokenizer(); 
-		tokenizer.setNGramMinSize(1); 
-		tokenizer.setNGramMaxSize(1); 
-		tokenizer.setDelimiters("\\s+\\n");
-		
-		// Set the filter 
-		StringToWordVector filter = new StringToWordVector(); 
-		filter.setInputFormat(data); 
-		filter.setTokenizer(tokenizer); 
-		filter.setDoNotOperateOnPerClassBasis(true);
-		filter.setMinTermFreq(5);
-		
-		return Filter.useFilter(data, filter);
-	}
-	
-	public Instances getInstances() throws Exception
-	{
-		return data;
 	}
 }
