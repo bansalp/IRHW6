@@ -1,6 +1,8 @@
 package com.sentimentanalysis.myapp;
 
-public class PClass 
+import java.io.Serializable;
+
+public class PClass implements Serializable
 {
 	private long Nc_positive = 0;
 	private long Nc_negative = 0;

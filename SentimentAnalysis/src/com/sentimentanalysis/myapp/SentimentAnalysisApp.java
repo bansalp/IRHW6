@@ -9,6 +9,7 @@ public class SentimentAnalysisApp
 			String trainDirPath = "textcat/train";
 			NaiveBayesClassifier classifier = new NaiveBayesClassifier();
 			classifier.train(trainDirPath);
+			classifier.serializeObject("model-file.txt");
 			classifier.printPClass();
 		}
 		catch (Exception e)

@@ -1,9 +1,11 @@
 package com.sentimentanalysis.myapp;
 
+import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
-public class PWClass 
+public class PWClass implements Serializable
 {
 	private Map<String, Map<String, Long>> pWC = new HashMap<String, Map<String, Long>>();
 	private long posCount = 0;
@@ -101,6 +103,49 @@ public class PWClass
 		else
 		{
 			return 0;
+		}
+	}
+	
+	public void filterWordsFewerThan5()
+	{
+		Iterator<Map.Entry<String, Map<String, Long>>> iter = pWC.entrySet().iterator();
+		
+		while (iter.hasNext()) 
+		{
+			Map.Entry<String, Map<String, Long>> entry = iter.next();
+			
+			Map<String, Long> cCount = entry.getValue();
+			long cCountPos = 0;
+			long cCountNeg = 0;
+			
+			if (cCount.containsKey("pos"))
+			{
+				cCountPos = cCount.get("pos");
+			}
+			
+			if (cCount.containsKey("neg"))
+			{
+				cCountNeg = cCount.get("neg");
+			}
+			
+			long total = cCountPos + cCountNeg;
+			
+			if (total < 5)
+			{
+				if (cCountPos > 0)
+				{
+					posCount = posCount - cCountPos;
+				}
+				
+				if (cCountNeg > 0)
+				{
+					negCount = negCount - cCountNeg;
+				}
+				
+				V--;
+				
+				iter.remove();
+			}
 		}
 	}
 }

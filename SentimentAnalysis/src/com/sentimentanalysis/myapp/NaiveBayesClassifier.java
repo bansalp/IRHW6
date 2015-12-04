@@ -3,8 +3,10 @@ package com.sentimentanalysis.myapp;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectOutputStream;
 
 public class NaiveBayesClassifier 
 {
@@ -15,6 +17,7 @@ public class NaiveBayesClassifier
 	public void train(String dirName) throws IOException 
 	{
 		addDirectory(dirName);
+		pWClass.filterWordsFewerThan5();
 	}
 	
 	public void addDirectory(String dirName) throws IOException
@@ -45,7 +48,6 @@ public class NaiveBayesClassifier
 	{
 		File file = new File (filePath);
 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
-		StringBuilder sb = new StringBuilder();
 		String line = null;
 		
 		while ((line = br.readLine()) != null)
@@ -54,6 +56,15 @@ public class NaiveBayesClassifier
 		}
 		
 		pClass.setNc(dirName);
+	}
+	
+	public void serializeObject(String objectFileName) throws IOException 
+	{
+		FileOutputStream fos = new FileOutputStream(objectFileName);
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
+		oos.writeObject(pClass);
+		oos.writeObject(pWClass);
+		oos.close();
 	}
 	
 	public void printPClass()
