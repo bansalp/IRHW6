@@ -61,15 +61,15 @@ public class NaiveBayesClassifier
 		System.out.println("P(pos): " + pClass.getPcPos());
 		System.out.println("P(neg): " + pClass.getPcNeg());
 		
-		System.out.println("P(Chinese|pos): " + pWClass.getCountWC("Chinese", "pos"));
-		System.out.println("P(Tokyo|pos): " + pWClass.getCountWC("Tokyo", "pos"));
-		System.out.println("P(Japan|pos): " + pWClass.getCountWC("Japan", "pos"));
+		System.out.println("P(chinese|pos): " + pWClass.getCountWC("chinese", "pos"));
+		System.out.println("P(tokyo|pos): " + pWClass.getCountWC("tokyo", "pos"));
+		System.out.println("P(japan|pos): " + pWClass.getCountWC("japan", "pos"));
 		
 		System.out.println();
 		
-		System.out.println("P(Chinese|neg): " + pWClass.getCountWC("Chinese", "neg"));
-		System.out.println("P(Tokyo|neg): " + pWClass.getCountWC("Tokyo", "neg"));
-		System.out.println("P(Japan|neg): " + pWClass.getCountWC("Japan", "neg"));
+		System.out.println("P(chinese|neg): " + pWClass.getCountWC("chinese", "neg"));
+		System.out.println("P(tokyo|neg): " + pWClass.getCountWC("tokyo", "neg"));
+		System.out.println("P(japan|neg): " + pWClass.getCountWC("japan", "neg"));
 		
 		System.out.println();
 		

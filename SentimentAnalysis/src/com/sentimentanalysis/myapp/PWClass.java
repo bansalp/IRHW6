@@ -85,11 +85,18 @@ public class PWClass
 	public long getCountWC(String word, String dirName)
 	{
 		// return count of word given a class
-		Long countWC = pWC.get(word).get(dirName); 
-		
-		if (countWC != null)
+		if (pWC.containsKey(word))
 		{
-			return countWC;
+			Map<String, Long> cCount = pWC.get(word);
+			
+			if (cCount.containsKey(dirName))
+			{
+				return cCount.get(dirName);
+			}
+			else
+			{
+				return 0;
+			}
 		}
 		else
 		{

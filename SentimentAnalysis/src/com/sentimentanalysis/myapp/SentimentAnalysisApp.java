@@ -6,14 +6,14 @@ public class SentimentAnalysisApp
 	{
 		try
 		{
-			String trainDirPath = "textcat/train_copy";
+			String trainDirPath = "textcat/train";
 			NaiveBayesClassifier classifier = new NaiveBayesClassifier();
 			classifier.train(trainDirPath);
 			classifier.printPClass();
 		}
 		catch (Exception e)
 		{
-			System.out.println("Error: " + e.getMessage());
+			e.printStackTrace();
 		}
 	}
 }
