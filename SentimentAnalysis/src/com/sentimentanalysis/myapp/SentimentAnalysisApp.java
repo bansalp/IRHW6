@@ -6,16 +6,10 @@ public class SentimentAnalysisApp
 	{
 		try
 		{
-			//String trainDirPath = "textcat/train";
-			//DirectoryLoader dl = new DirectoryLoader();
-			//dl.loadDir(trainDirPath);
-			
-			String str = "Hey hi .       hello parth   \n hmm tum   \n          ";
-			String[] array = str.split("[\r\n|\\n|\\s]+");
-			for (String s: array)
-			{
-				System.out.print(s);
-			}
+			String trainDirPath = "textcat/train_copy";
+			NaiveBayesClassifier classifier = new NaiveBayesClassifier();
+			classifier.train(trainDirPath);
+			classifier.printPClass();
 		}
 		catch (Exception e)
 		{
