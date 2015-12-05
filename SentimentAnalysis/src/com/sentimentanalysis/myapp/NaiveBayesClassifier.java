@@ -66,29 +66,4 @@ public class NaiveBayesClassifier
 		oos.writeObject(pWClass);
 		oos.close();
 	}
-	
-	public void printPClass()
-	{
-		System.out.println("P(pos): " + pClass.getPcPos());
-		System.out.println("P(neg): " + pClass.getPcNeg());
-		
-		System.out.println("P(chinese|pos): " + pWClass.getCountWC("chinese", "pos"));
-		System.out.println("P(tokyo|pos): " + pWClass.getCountWC("tokyo", "pos"));
-		System.out.println("P(japan|pos): " + pWClass.getCountWC("japan", "pos"));
-		
-		System.out.println();
-		
-		System.out.println("P(chinese|neg): " + pWClass.getCountWC("chinese", "neg"));
-		System.out.println("P(tokyo|neg): " + pWClass.getCountWC("tokyo", "neg"));
-		System.out.println("P(japan|neg): " + pWClass.getCountWC("japan", "neg"));
-		
-		System.out.println();
-		
-		System.out.println("count(pos): " + pWClass.getPosWordCount());
-		System.out.println("count(neg): " + pWClass.getNegWordCount());
-		
-		System.out.println();
-		
-		System.out.println("|V|: " + pWClass.getVocabularyCount());
-	}
 }
