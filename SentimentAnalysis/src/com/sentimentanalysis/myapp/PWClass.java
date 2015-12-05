@@ -69,6 +69,18 @@ public class PWClass implements Serializable
 		}
 	}
 	
+	public long getWordCount(String dirName)
+	{
+		if (dirName.equalsIgnoreCase("pos"))
+		{
+			return getPosWordCount();
+		}
+		else
+		{
+			return getNegWordCount();
+		}
+	}
+	
 	public long getPosWordCount()
 	{
 		return posCount;
