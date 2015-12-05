@@ -199,5 +199,5 @@
 9364.txt 5.007288145013508E143 1.751065634309873E145 pos neg false
 9390.txt -1.1375891299297286E41 -5.10368937404908E40 pos neg false
 
-Percentage of Positive: 48.5
-Percentage of Negative: 51.5
+Percentage of Positive: 42.0
+Percentage of Negative: 45.0

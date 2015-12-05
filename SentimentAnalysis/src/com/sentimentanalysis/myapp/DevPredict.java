@@ -18,9 +18,6 @@ public class DevPredict
 	private PClass pClass;
 	private PWClass pWClass;
 	private String TOKENIZER_PATTERN = "[\r\n|\\n|\\s]+";
-	private long docTotal = 0;
-	private long posPredictTotal = 0;
-	private long negPredictTotal = 0;
 
 	public void loadModel(String modelFileName) throws IOException, ClassNotFoundException 
 	{
@@ -74,7 +71,6 @@ public class DevPredict
 		}
 		
 		classifyFile(filePath, dirName, sb.toString());
-		docTotal++;
 	}
 	
 	public void classifyFile(String filePath, String dirName, String fileContent)
@@ -104,12 +100,10 @@ public class DevPredict
 		if (pWCPos > pWCNeg)
 		{
 			doc.setPredictedClass("pos");
-			posPredictTotal++;
 		}
 		else
 		{
 			doc.setPredictedClass("neg");
-			negPredictTotal++;
 		}
 	}
 	
@@ -138,16 +132,41 @@ public class DevPredict
 	public void display() throws FileNotFoundException, UnsupportedEncodingException
 	{
 		PrintWriter writer = new PrintWriter("output.txt", "UTF-8");
+		long posActual = 0;
+		long negActual = 0;
+		long posPredict = 0;
+		long negPredict = 0;
 		
 		for (Map.Entry<String, Document> entry: result.entrySet())
 		{
+			Document doc = entry.getValue();
+			
+			if (doc.getOriginalClass().equalsIgnoreCase("pos"))
+			{
+				if (doc.getPredictedClass().equalsIgnoreCase("pos"))
+				{
+					posPredict++;
+				}
+				
+				posActual++;
+			}
+			else
+			{
+				if (doc.getPredictedClass().equalsIgnoreCase("neg"))
+				{
+					negPredict++;
+				}
+				
+				negActual++;
+			}
+			
 			writer.println(entry.getKey() + " " + entry.getValue());
 		}
 		
 		writer.println();
 		
-		writer.println("Percentage of Positive: " + ((posPredictTotal / (double) docTotal) * 100));
-		writer.println("Percentage of Negative: " + ((negPredictTotal / (double) docTotal) * 100));
+		writer.println("Percentage of Positive: " + ((posPredict / (double) posActual) * 100));
+		writer.println("Percentage of Negative: " + ((negPredict / (double) negActual) * 100));
 		
 		writer.close();
 	}
