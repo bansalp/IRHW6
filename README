@@ -44,3 +44,6 @@ q3_predictions_file.txt contains predictions for the test data, which lists each
 Percentage of positive and negative reviews in the development data that were correctly classified:
 Positive: 42.0%
 Negative: 45.0%
+
+q4_pos_to_neg_ratio.txt contains the list of the 20 terms with the highest (log) ratio of positive to negative weight.
+q5_neg_to_pos_ratio.txt contains the list of the 20 terms with the highest (log) ratio of negative to positive weight.

@@ -160,4 +160,14 @@ public class PWClass implements Serializable
 			}
 		}
 	}
+
+	public Map<String, Map<String, Long>> getpWC() 
+	{
+		return pWC;
+	}
+
+	public void setpWC(Map<String, Map<String, Long>> pWC) 
+	{
+		this.pWC = pWC;
+	}
 }
