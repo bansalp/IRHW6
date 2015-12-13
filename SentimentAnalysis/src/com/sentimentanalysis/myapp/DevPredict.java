@@ -100,10 +100,20 @@ public class DevPredict
 		if (pWCPos > pWCNeg)
 		{
 			doc.setPredictedClass("pos");
+			
+			if (!doc.getOriginalClass().equalsIgnoreCase("pos") && !doc.getOriginalClass().equalsIgnoreCase("neg"))
+			{
+				doc.setOriginalClass("pos");
+			}
 		}
 		else
 		{
 			doc.setPredictedClass("neg");
+			
+			if (!doc.getOriginalClass().equalsIgnoreCase("pos") && !doc.getOriginalClass().equalsIgnoreCase("neg"))
+			{
+				doc.setOriginalClass("neg");
+			}
 		}
 	}
 	
@@ -129,9 +139,9 @@ public class DevPredict
 		return logb(a, 100);
 	}
 	
-	public void display() throws FileNotFoundException, UnsupportedEncodingException
+	public void display(String fileName) throws FileNotFoundException, UnsupportedEncodingException
 	{
-		PrintWriter writer = new PrintWriter("output.txt", "UTF-8");
+		PrintWriter writer = new PrintWriter(fileName, "UTF-8");
 		long posActual = 0;
 		long negActual = 0;
 		long posPredict = 0;

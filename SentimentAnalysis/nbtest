@@ -1,0 +1,1 @@
+java -cp ./bin com.sentimentanalysis.myapp.DevPredictApp $1 $2 $3

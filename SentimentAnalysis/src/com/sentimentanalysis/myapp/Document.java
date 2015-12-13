@@ -57,6 +57,7 @@ public class Document
 			correctlyClassified = true;
 		}
 		
-		return posScore + " " + negScore + " " + originalClass + " " + predictedClass + " " + correctlyClassified;
+		//return posScore + " " + negScore + " " + originalClass + " " + predictedClass + " " + correctlyClassified;
+		return posScore + " " + negScore;
 	}
 }

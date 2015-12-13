@@ -1,0 +1,46 @@
+How to compile?
+
+Execute the following commands in order:
+1. cd SentimentAnalysis/ [This command is used to set present working directory to SentimentAnalysis folder]
+2. ant clean [This command is used to clean previously generated .class files]
+3. ant build [This command is used to compile and generate .class files for the project]
+4. chmod +x nbtrain [This command is used to give executable permissions to nbtrain file]
+5. chmod +x nbtest [This command is used to give executable permissions to nbtest file]
+
+-------------------------------------------------------------------------------
+
+How to run?
+
+Execute the following command:
+Train classifier:
+./nbtrain <training-directory> <model-file>
+
+Predict the class of unseen test documents:
+./nbtest <model-file> <test-directory> <predictions-file>
+
+-------------------------------------------------------------------------------
+
+Example:
+
+Execute the following commands in order:
+
+1. cd SentimentAnalysis/
+2. ant clean
+3. ant build
+4. chmod +x nbtrain
+5. chmod +x nbtest
+6. Train classifier: ./nbtrain textcat/train model_file.txt
+7. Predict the class of unseen dev documents: ./nbtest model_file.txt textcat/dev q2_predictions_file.txt
+8. Predict the class of unseen test documents: ./nbtest model_file.txt textcat/test q3_predictions_file.txt
+
+-------------------------------------------------------------------------------
+
+Output:
+
+output folder contains all the deliverables for the assignment. 
+q2_predictions_file.txt contains predictions for the development data, which lists each filename in the dev directory, and the scores our model assigns to the possibilities of positive and negative reviews. 
+q3_predictions_file.txt contains predictions for the test data, which lists each filename in the test directory, and the scores our model assigns to the possibilities of positive and negative reviews. 
+
+Percentage of positive and negative reviews in the development data that were correctly classified:
+Positive: 42.0%
+Negative: 45.0%
