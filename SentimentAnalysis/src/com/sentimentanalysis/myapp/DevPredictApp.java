@@ -2,22 +2,27 @@ package com.sentimentanalysis.myapp;
 
 public class DevPredictApp 
 {
+	private static int THREE = 3;
+	
 	public static void main (String[] args)
 	{
-		try
+		if (args.length == THREE)
 		{
-			String modelFileName = "model_file.txt";
-			String devTestDirName = "textcat/dev";
-			String predictionsFileName = "predictions_file.txt";
-			
-			DevPredict dp = new DevPredict();
-			dp.loadModel(modelFileName);
-			dp.test(devTestDirName);
-			dp.display();
+			try
+			{
+				DevPredict dp = new DevPredict();
+				dp.loadModel(args[0]);
+				dp.test(args[1]);
+				dp.display(args[2]);
+			}
+			catch (Exception e)
+			{
+				System.out.println("Error: " + e.getMessage());
+			}
 		}
-		catch (Exception e)
+		else
 		{
-			e.getStackTrace();
+			System.out.println("Illegal number of arguments!"); 
 		}
 	}
 }
